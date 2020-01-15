@@ -5,6 +5,8 @@ import Login from "./Components/auth/login";
 import { LoadUserComponent } from "./LoadUser";
 import { useUserStore } from "./Context/appStore";
 import NavBar from "./Components/inc/NavBar";
+import Footer from "./Components/inc/Footer";
+
 
 
 
@@ -27,6 +29,7 @@ function App() {
             </Switch>
           </div>
         </div>
+        <Footer />
       </Router>
     </div>
   );
