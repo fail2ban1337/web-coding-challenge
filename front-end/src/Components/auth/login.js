@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+        background: "linear-gradient(45deg, #3f51b5 30%, #3f8cb5 90%)"
     },
     form: {
         width: "100%",
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
-        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+        background: "linear-gradient(45deg, #3f51b5 30%, #3f8cb5 90%)"
     }
 }));
 
@@ -43,9 +43,8 @@ const SignIn = () => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
-        remember: false
     });
-    const { email, password, remember } = formData;
+    const { email, password } = formData;
 
     const onChange = e =>
         setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
@@ -93,23 +92,7 @@ const SignIn = () => {
                         autoComplete="current-password"
                     />
 
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                value={remember || false}
-                                color="primary"
-                                checked={remember || false}
-                                name="remember"
-                                onChange={e =>
-                                    setFormData({
-                                        ...formData,
-                                        [e.target.name]: e.target.checked
-                                    })
-                                }
-                            />
-                        }
-                        label="Remember me"
-                    />
+
                     <Button
                         type="submit"
                         fullWidth
@@ -119,7 +102,7 @@ const SignIn = () => {
                     >
                         Sign In
           </Button>
-                    <Grid container>
+                    <Grid container justify="center">
                         <Grid item>
                             <Link to="/register">{"Don't have an account? Sign Up"}</Link>
                         </Grid>
