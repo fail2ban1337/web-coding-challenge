@@ -1,0 +1,11 @@
+{
+  "dev": {
+    "host": "localhost",
+    "database": "matcha",
+    "user": "root",
+    "password": "tiger",
+    "driver": "mysql",
+    "multipleStatments": true
+  },
+  "sql-file": true
+}
