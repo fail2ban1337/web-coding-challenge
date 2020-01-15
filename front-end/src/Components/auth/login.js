@@ -76,7 +76,6 @@ const SignIn = () => {
                         onChange={e => onChange(e)}
                         autoFocus
                     />
-
                     <TextField
                         variant="standard"
                         margin="normal"
@@ -89,8 +88,6 @@ const SignIn = () => {
                         onChange={e => onChange(e)}
                         autoComplete="current-password"
                     />
-
-
                     <Button
                         type="submit"
                         fullWidth
