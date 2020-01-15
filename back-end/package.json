@@ -1,0 +1,22 @@
+{
+  "name": "challenge",
+  "version": "1.0.0",
+  "description": "app that lists shops nearby",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ayoub Belomari",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "nodemon": "^2.0.2"
+  }
+}
