@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Login from "./Components/auth/login";
 import { LoadUserComponent } from "./LoadUser";
 import { useUserStore } from "./Context/appStore";
+import NavBar from "./Components/inc/NavBar";
+
 
 
 
@@ -18,6 +20,7 @@ function App() {
 
       <Router>
         <div className="App">
+          <NavBar />
           <div>
             <Switch>
               <Route exact path="/login" component={Login} />
