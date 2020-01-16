@@ -2,6 +2,7 @@
   "dev": {
     "host": "localhost",
     "user": "root",
+    "database": "shop_united",
     "password": "tiger",
     "driver": "mysql",
     "multipleStatments": true

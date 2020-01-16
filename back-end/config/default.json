@@ -1,0 +1,9 @@
+{
+    "database": {
+        "user": "root",
+        "password": "tiger",
+        "host": "localhost",
+        "database": "shop_united"
+    },
+    "jwtSecret": "1337shop"
+}
