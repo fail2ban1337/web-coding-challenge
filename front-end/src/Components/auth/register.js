@@ -15,6 +15,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useUserStore } from "../../Context/appStore";
+import { register } from "../../actions/userAction";
+import { FormHelperText } from "@material-ui/core";
+import Alert from "../inc/AlertComponents";
+import { REMOVE_ERRORS, REMOVE_ALERT } from "../../actions/actionTypes";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -53,7 +57,10 @@ const useStyles = makeStyles(theme => ({
 
 function SignUp() {
   const classes = useStyles();
-  const [state, dispatch] = useUserStore();
+  const [{ auth, registerRdc, alert }, dispatch] = useUserStore();
+  const [toLogin, setToHome] = useState(false);
+  const stableDispatch = useCallback(dispatch, []);
+
   const [MyForm, setMyFormData] = useState({
     email: "",
     password: "",
@@ -62,9 +69,13 @@ function SignUp() {
     showConfPassword: false
   });
 
+  const { email, password, confirmPassword } = MyForm;
+
   const submitForm = async form => {
     form.preventDefault();
+    await register(email, password, confirmPassword, dispatch);
   };
+
   const handleClickShowPassword = () => {
     setMyFormData({ ...MyForm, showPassword: !MyForm.showPassword });
   };
@@ -76,6 +87,9 @@ function SignUp() {
   };
   const handleInputChange = event => {
     event.persist();
+    dispatch({
+      type: REMOVE_ERRORS
+    });
     setMyFormData(MyForm => ({
       ...MyForm,
       [event.target.name]: event.target.value.trim()
@@ -88,113 +102,160 @@ function SignUp() {
       [event.target.name]: event.target.value
     }));
   };
-  const { email } = MyForm;
-  if (state.auth.isAuthenticated) {
+
+  useEffect(() => {
+    return () => {
+      stableDispatch({
+        type: REMOVE_ERRORS
+      });
+      stableDispatch({
+        type: REMOVE_ALERT
+      });
+    };
+  }, [stableDispatch]);
+  if (registerRdc.success) {
+    let time = setTimeout(() => test(time), 3000);
+    dispatch({
+      type: REMOVE_ERRORS
+    });
+  }
+  const test = timer => {
+    setToHome(true);
+    clearTimeout(timer);
+  };
+  if (auth.isAuthenticated) {
     return <Redirect to="/shops" />;
   }
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <AccountCircle />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} onSubmit={form => submitForm(form)}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
+    <>
+      {toLogin ? (
+        <Redirect to="/login" />
+      ) : (
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            {alert.msg && <Alert message={alert.msg} type={alert.alertType} />}
+            <Avatar className={classes.avatar}>
+              <AccountCircle />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <form className={classes.form} onSubmit={form => submitForm(form)}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    error={registerRdc.errors.email.msg ? true : false}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    onChange={handleInputChange}
+                    value={email}
+                    inputProps={{ maxLength: 100 }}
+                  />
+                  {registerRdc.errors.email.msg && (
+                    <FormHelperText className={classes.helperText}>
+                      <sup>*</sup> {registerRdc.errors.email.msg}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    error={registerRdc.errors.password.msg ? true : false}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type={MyForm.showPassword ? "text" : "password"}
+                    autoComplete="new-password"
+                    onChange={handlePasswordChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {MyForm.showPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  {registerRdc.errors.password.msg && (
+                    <FormHelperText className={classes.helperText}>
+                      <sup>*</sup> {registerRdc.errors.password.msg}
+                    </FormHelperText>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    error={
+                      registerRdc.errors.confirmPassword.msg ? true : false
+                    }
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="confirmPassword"
+                    label="Confirm  Password"
+                    autoComplete="new-password"
+                    type={MyForm.showConfPassword ? "text" : "password"}
+                    onChange={handlePasswordChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowConfPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {MyForm.showConfPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  {registerRdc.errors.confirmPassword.msg && (
+                    <FormHelperText className={classes.helperText}>
+                      <sup>*</sup> {registerRdc.errors.confirmPassword.msg}
+                    </FormHelperText>
+                  )}
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
                 fullWidth
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={handleInputChange}
-                value={email}
-                inputProps={{ maxLength: 100 }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type={MyForm.showPassword ? "text" : "password"}
-                autoComplete="new-password"
-                onChange={handlePasswordChange}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        edge="end"
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {MyForm.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="confirmPassword"
-                label="Confirm  Password"
-                autoComplete="new-password"
-                type={MyForm.showConfPassword ? "text" : "password"}
-                onChange={handlePasswordChange}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        edge="end"
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowConfPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {MyForm.showConfPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="center">
-            <Grid item>
-              <Link to="/login">Already have an account? Sign in</Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+              <Grid container justify="center">
+                <Grid item>
+                  <Link to="/login">Already have an account? Sign in</Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Container>
+      )}
+    </>
   );
 }
 const Register = () => {

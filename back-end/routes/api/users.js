@@ -76,11 +76,15 @@ router.post(
       "Please entre a password with 6 or more characters"
     ).isLength({
       min: 6
-    })
+    }),
+    check("confirmPassword", "Passwords do not match").custom(
+      (value, { req }) => value === req.body.password
+    )
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log(errors);
       return res.status(400).json({
         errors: errors.array()
       });

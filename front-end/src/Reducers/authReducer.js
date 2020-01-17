@@ -3,7 +3,10 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOGOUT
+  LOGOUT,
+  FAILIED_REGISTRATION,
+  SUCCESS_REGISTRATION,
+  REMOVE_ERRORS
 } from "../actions/actionTypes";
 
 export const authInitState = {
@@ -45,3 +48,43 @@ export function authReducer(state = authInitState, action) {
       return state;
   }
 }
+
+export const errorsInitState = {
+  success: false,
+  errors: {
+    email: {
+      msg: ""
+    },
+    password: {
+      msg: ""
+    },
+    confirmPassword: {
+      msg: ""
+    }
+  }
+};
+
+export const RegisterReducer = (state = errorsInitState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case SUCCESS_REGISTRATION:
+      return {
+        ...state,
+        success: true
+      };
+    case FAILIED_REGISTRATION:
+      return {
+        errors: {
+          ...state.errors,
+          ...payload.reduce((obj, { param, ...rest }) => {
+            obj[param] = { ...rest };
+            return obj;
+          }, {})
+        }
+      };
+    case REMOVE_ERRORS:
+      return errorsInitState;
+    default:
+      return state;
+  }
+};

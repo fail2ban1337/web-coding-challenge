@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import { login } from "../../actions/userAction";
 import { useUserStore } from "../../Context/appStore";
 import Alert from "../inc/AlertComponents";
+import { REMOVE_ALERT } from "../../actions/actionTypes";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -42,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 const SignIn = () => {
   const classes = useStyles();
   const [state, dispatch] = useUserStore();
-  console.log(state);
+  const stableDispatch = useCallback(dispatch, []);
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -56,6 +57,15 @@ const SignIn = () => {
     form.preventDefault();
     login(email, password, dispatch);
   };
+
+  useEffect(() => {
+    return () => {
+      stableDispatch({
+        type: REMOVE_ALERT
+      });
+    };
+  }, [stableDispatch]);
+
   if (state.auth.isAuthenticated) {
     return <Redirect to="/shops" />;
   }
