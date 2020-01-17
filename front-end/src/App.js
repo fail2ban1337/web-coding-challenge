@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Components/auth/login";
 import Register from "./Components/auth/register";
-import { LoadUserComponent } from "./LoadUser";
 import { useUserStore } from "./Context/appStore";
 import NavBar from "./Components/inc/NavBar";
 import Footer from "./Components/inc/Footer";
@@ -17,10 +16,11 @@ if (localStorage.token) {
 
 function App() {
   const [, dispatch] = useUserStore();
+  const stableDispatch = useCallback(dispatch, []);
 
   useEffect(() => {
-    loadUser(dispatch);
-  }, []);
+    loadUser(stableDispatch);
+  }, [stableDispatch]);
   return (
     <div
       style={{ display: "flex", minHeight: "100vh", flexDirection: "column" }}
