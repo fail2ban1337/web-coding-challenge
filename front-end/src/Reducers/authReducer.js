@@ -1,4 +1,10 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from "../actions/actionTypes";
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGOUT
+} from "../actions/actionTypes";
 
 export const authInitState = {
   token: localStorage.getItem("token"),
@@ -10,6 +16,13 @@ export const authInitState = {
 export function authReducer(state = authInitState, action) {
   const { type, payload } = action;
   switch (type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload
+      };
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
       return {
@@ -19,6 +32,8 @@ export function authReducer(state = authInitState, action) {
         loading: false
       };
     case LOGIN_FAIL:
+    case AUTH_ERROR:
+    case LOGOUT:
       localStorage.removeItem("token");
       return {
         ...state,

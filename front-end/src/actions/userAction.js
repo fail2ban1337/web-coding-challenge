@@ -1,6 +1,34 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL, SET_ALERT } from "./actionTypes";
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  SET_ALERT,
+  AUTH_ERROR,
+  USER_LOADED,
+  LOGOUT
+} from "./actionTypes";
 import axios from "axios";
+import setAuthToken from "../utils/setAuthToken";
 
+//Load User
+export const loadUser = async dispatch => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  try {
+    const res = await axios.get("/api/auth");
+    console.log(res);
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: AUTH_ERROR
+    });
+  }
+};
+
+// Register User
 export const login = async (email, password, dispatch) => {
   let config = {
     header: {
@@ -31,4 +59,11 @@ export const login = async (email, password, dispatch) => {
       type: LOGIN_FAIL
     });
   }
+};
+
+// logout
+export const logout = dispatch => {
+  dispatch({
+    type: LOGOUT
+  });
 };
