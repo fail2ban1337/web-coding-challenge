@@ -14,6 +14,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { useUserStore } from "../../Context/appStore";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -52,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 function SignUp() {
   const classes = useStyles();
-
+  const [state, dispatch] = useUserStore();
   const [MyForm, setMyFormData] = useState({
     email: "",
     password: "",
@@ -88,6 +89,9 @@ function SignUp() {
     }));
   };
   const { email } = MyForm;
+  if (state.auth.isAuthenticated) {
+    return <Redirect to="/shops" />;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
