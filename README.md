@@ -78,6 +78,7 @@ Bonus point (those items are optional):<br>
 - NODEJS
 - EXPRESS
 - MATERIAL-ui
+- MYSQL
 
 # Contributing
 Feel free to contribute if you think something can be improved in any way.
