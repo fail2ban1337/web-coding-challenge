@@ -10,6 +10,17 @@ async function getShops(id) {
     return [];
   }
 }
+async function getFavorite(id) {
+  try {
+    let sql =
+      "SELECT t2.* FROM liked_shops t1 INNER JOIN shops_info t2 on t1.id_shop = t2.id WHERE t1.id_user = ?";
+    const [result] = await pool.query(sql, [id]);
+    return result;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
 
 async function likeShop(user_id, shop_id) {
   try {
@@ -40,9 +51,21 @@ async function likedShops(user_id) {
     return [];
   }
 }
+
+async function removeShop(user_id, shop_id) {
+  try {
+    let sql = "DELETE FROM liked_shops WHERE id_user = ? AND id_shop = ?";
+    const [result] = await pool.query(sql, [user_id, shop_id]);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
 module.exports = {
   getShops,
   likeShop,
   dislikeShop,
-  likedShops
+  likedShops,
+  getFavorite,
+  removeShop
 };

@@ -11,9 +11,8 @@ import Alert from "../inc/AlertComponents";
 import Box from "@material-ui/core/Box";
 import StorefrontIcon from "@material-ui/icons/Storefront";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import { getShops, likeShop, dislikeShop } from "../../actions/shopAction";
+import { getFavShops, removeShop } from "../../actions/shopAction";
 import { REMOVE_ALERT } from "../../actions/actionTypes";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -109,27 +108,19 @@ function Shop() {
   const [{ shopsRdc }, dispatch] = useUserStore();
   const stableDispatch = useCallback(dispatch, []);
 
-  const OnLike = id => {
-    async function LShop() {
-      await likeShop(id, dispatch);
-      await getShops(stableDispatch);
+  const OnRemove = id => {
+    async function RShop() {
+      await removeShop(id, dispatch);
+      await getFavShops(stableDispatch);
     }
-    LShop();
-  };
-
-  const OnDislike = id => {
-    async function DShop() {
-      await dislikeShop(id, dispatch);
-      await getShops(stableDispatch);
-    }
-    DShop();
+    RShop();
   };
 
   useEffect(() => {
-    async function gShops() {
-      await getShops(stableDispatch);
+    async function gFavShops() {
+      await getFavShops(stableDispatch);
     }
-    gShops();
+    gFavShops();
   }, [stableDispatch]);
 
   useEffect(() => {
@@ -139,6 +130,7 @@ function Shop() {
       });
     };
   }, [stableDispatch]);
+
   if (shopsRdc.isLoading)
     return (
       <Grid xs={12} container item justify="center">
@@ -177,10 +169,7 @@ function Shop() {
                   transform: "translateY(-50%)"
                 }}
               >
-                <Button onClick={() => OnLike(value.id)}>
-                  <ThumbUpAltIcon />
-                </Button>
-                <Button color="secondary" onClick={() => OnDislike(value.id)}>
+                <Button color="secondary" onClick={() => OnRemove(value.id)}>
                   <ThumbDownIcon />
                 </Button>
               </ButtonGroup>
@@ -212,16 +201,14 @@ const Introduction = () => {
           <StorefrontIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Shops
+          Favorite Shops
         </Typography>
       </div>
     </Container>
   );
 };
 
-const Shops = () => {
-  const [{ auth }] = useUserStore();
-  if (auth.loading) return null;
+const FavoriteShops = () => {
   return (
     <div style={{ flex: 1 }}>
       <Introduction />
@@ -232,4 +219,4 @@ const Shops = () => {
   );
 };
 
-export default Shops;
+export default FavoriteShops;
