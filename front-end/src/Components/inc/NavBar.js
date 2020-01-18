@@ -9,7 +9,8 @@ import { Container, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../../Context/appStore";
 import { logout } from "../../actions/userAction";
-
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
@@ -39,8 +40,12 @@ function NavBar() {
   };
   const authLinks = (
     <>
-      <NavBtn text="shops" link="/shops" />
-      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      <MenuItem link="/shops">
+        Favorite <FavoriteIcon />
+      </MenuItem>
+      <MenuItem onClick={handleLogout}>
+        Logout <ExitToAppIcon />
+      </MenuItem>
     </>
   );
   const guestLink = (

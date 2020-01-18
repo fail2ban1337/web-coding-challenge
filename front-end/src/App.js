@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Components/auth/login";
 import Register from "./Components/auth/register";
+import Shops from "./Components/shops/shops";
 import { useUserStore } from "./Context/appStore";
 import NavBar from "./Components/inc/NavBar";
 import Footer from "./Components/inc/Footer";
@@ -32,6 +33,7 @@ function App() {
             <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <PrivateRoute exact path="/shops" component={Shops} />
             </Switch>
           </div>
         </div>
