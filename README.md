@@ -2,9 +2,9 @@
 
 
 
-# United Remote Coding Challenge
+# United Remote Coding Challenge For Internship
 a small web application allowing you to
-lists shops nearby from your position
+lists shops nearby.
 
 # 🚀Quick start
 
