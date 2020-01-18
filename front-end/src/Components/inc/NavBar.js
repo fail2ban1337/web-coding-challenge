@@ -14,14 +14,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
-  },
-  title: {
-    display: "none",
-    color: "#fff",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-      overflow: "visible"
-    }
   }
 }));
 
@@ -40,9 +32,12 @@ function NavBar() {
   };
   const authLinks = (
     <>
-      <MenuItem link="/shops">
-        Favorite <FavoriteIcon />
-      </MenuItem>
+      <Link to={`/favShops`} style={{ color: "white", textDecoration: "none" }}>
+        <MenuItem>
+          Favorite <FavoriteIcon />
+        </MenuItem>
+      </Link>
+
       <MenuItem onClick={handleLogout}>
         Logout <ExitToAppIcon />
       </MenuItem>
@@ -50,7 +45,7 @@ function NavBar() {
   );
   const guestLink = (
     <>
-      <NavBtn text="Login" link="/login" />
+      <NavBtn text="Login" link="/" />
       <NavBtn text="register" link="/register" />
     </>
   );
@@ -65,10 +60,14 @@ function NavBar() {
       >
         <Container maxWidth="xl">
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Shop <ShoppingBasketIcon />
-            </Typography>
-
+            <Link
+              to={`/shops`}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <Typography variant="h6" noWrap>
+                Shop <ShoppingBasketIcon />
+              </Typography>
+            </Link>
             <div className={classes.grow} />
 
             {!loading && <>{isAuthenticated ? authLinks : guestLink}</>}

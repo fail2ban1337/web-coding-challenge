@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Components/auth/login";
 import Register from "./Components/auth/register";
 import Shops from "./Components/shops/shops";
+import FavoriteShops from "./Components/shops/favoriteShops";
 import { useUserStore } from "./Context/appStore";
 import NavBar from "./Components/inc/NavBar";
 import Footer from "./Components/inc/Footer";
@@ -31,9 +32,10 @@ function App() {
           <NavBar />
           <div>
             <Switch>
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
               <PrivateRoute exact path="/shops" component={Shops} />
+              <PrivateRoute exact path="/favShops" component={FavoriteShops} />
             </Switch>
           </div>
         </div>
