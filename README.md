@@ -22,8 +22,8 @@ you have to change the user and password ;)
     "jwtSecret": "1337shop"
 }
 ```
-
-thne run tha app:
+<br>
+then run tha app:
 ```
 cd back-end && npm run dev
 ```
