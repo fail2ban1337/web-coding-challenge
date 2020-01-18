@@ -23,23 +23,23 @@ you have to change the user and password ;)
 ```
 
 # PAGES :
-1. Register Page:
 <p align="center">
+1. Register Page:
 <img width="600" alt="Screen Shot 2020-01-18 at 9 33 13 PM" src="https://user-images.githubusercontent.com/47558088/72670368-f6209280-3a3c-11ea-8f4b-b0697f836b2b.png">
 </p>
-
-2. Login Page:
+<br>
 <p align="center">
+2. Login Page:
 <img width="600" alt="Screen Shot 2020-01-18 at 9 39 19 PM" src="https://user-images.githubusercontent.com/47558088/72670374-05074500-3a3d-11ea-918b-4dc3180e7d0a.png">
 </p>
-
-3. Shops Page:
+<br>
 <p align="center">
+3. Shops Page:
 <img width="600" alt="Screen Shot 2020-01-18 at 9 32 40 PM" src="https://user-images.githubusercontent.com/47558088/72670382-0e90ad00-3a3d-11ea-8485-2e6846893dfb.png">
 </p>
-
-4. favorite shops Page:
+<br>
 <p align="center">
+4. favorite shops Page:
 <img width="600" alt="Screen Shot 2020-01-18 at 9 32 55 PM" src="https://user-images.githubusercontent.com/47558088/72670386-18b2ab80-3a3d-11ea-8ae4-bb42b87f3fcf.png">
 </p>
 
