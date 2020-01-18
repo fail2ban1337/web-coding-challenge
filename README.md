@@ -23,8 +23,11 @@ you have to change the user and password ;)
 }
 ```
 <br>
-then run tha app<br>
-```cd back-end && npm run dev```
+then run tha app
+<br>
+```
+cd back-end && npm run dev
+```
 
 
 
