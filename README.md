@@ -27,7 +27,6 @@ then run tha app
 <br>
 ```
 cd back-end && npm run dev
-```
 
 
 
