@@ -18,7 +18,6 @@ async function likeShop(user_id, shop_id) {
     return true;
   } catch (err) {
     return false;
-    console.log(err);
   }
 }
 

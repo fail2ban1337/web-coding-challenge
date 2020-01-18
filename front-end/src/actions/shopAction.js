@@ -13,7 +13,7 @@ export const getShops = async dispatch => {
     if (errors) {
       dispatch({
         type: SET_ALERT,
-        payload: { alertType: "error", msg: "" }
+        payload: { alertType: "error", msg: "server error" }
       });
     }
   }
@@ -30,7 +30,16 @@ export const likeShop = async (id, dispatch) => {
   };
   try {
     const res = await axios.post("/api/shops/likeShop", body, config);
-  } catch (error) {}
+    dispatch({
+      type: SET_ALERT,
+      payload: { alertType: "success", msg: res.data.msg }
+    });
+  } catch (error) {
+    dispatch({
+      type: SET_ALERT,
+      payload: { alertType: "error", msg: "server error" }
+    });
+  }
 };
 
 export const dislikeShop = async (id, dispatch) => {
@@ -44,5 +53,14 @@ export const dislikeShop = async (id, dispatch) => {
   };
   try {
     const res = await axios.post("/api/shops/dislikeShop", body, config);
-  } catch (error) {}
+    dispatch({
+      type: SET_ALERT,
+      payload: { alertType: "error", msg: res.data.msg }
+    });
+  } catch (error) {
+    dispatch({
+      type: SET_ALERT,
+      payload: { alertType: "error", msg: "server error" }
+    });
+  }
 };

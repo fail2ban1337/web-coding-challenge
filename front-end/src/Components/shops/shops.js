@@ -18,6 +18,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import { getShops, likeShop, dislikeShop } from "../../actions/shopAction";
+import { REMOVE_ALERT } from "../../actions/actionTypes";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -109,12 +110,12 @@ const ShopContainer = ({ children }) => {
 function Shop() {
   const classes = useStyles();
   const [{ shopsRdc }, dispatch] = useUserStore();
-  console.log(shopsRdc);
   const stableDispatch = useCallback(dispatch, []);
 
   const OnLike = id => {
     async function LShop() {
       await likeShop(id, dispatch);
+      await getShops(stableDispatch);
     }
     LShop();
   };
@@ -122,6 +123,7 @@ function Shop() {
   const OnDislike = id => {
     async function DShop() {
       await dislikeShop(id, dispatch);
+      await getShops(stableDispatch);
     }
     DShop();
   };
@@ -131,6 +133,14 @@ function Shop() {
       await getShops(stableDispatch);
     }
     gShops();
+  }, [stableDispatch]);
+
+  useEffect(() => {
+    return () => {
+      stableDispatch({
+        type: REMOVE_ALERT
+      });
+    };
   }, [stableDispatch]);
   return (
     <>

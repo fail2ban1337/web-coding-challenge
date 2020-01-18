@@ -47,7 +47,10 @@ router.get("/getShops", [middleware.auth], async (req, res) => {
 router.post("/likeShop", [middleware.auth], async (req, res) => {
   try {
     const result = await shopModel.likeShop(req.user.id, req.body.id);
-  } catch (error) {}
+    res.json({ success: true, msg: "Like Shop Done" });
+  } catch (error) {
+    res.status(500).send("server error");
+  }
 });
 
 // @route   POST /api/shops/likeShop
@@ -56,7 +59,10 @@ router.post("/likeShop", [middleware.auth], async (req, res) => {
 router.post("/dislikeShop", [middleware.auth], async (req, res) => {
   try {
     const result = await shopModel.dislikeShop(req.user.id, req.body.id);
-  } catch (error) {}
+    res.json({ success: true, msg: "Dislike Shop Done" });
+  } catch (error) {
+    res.status(500).send("server error");
+  }
 });
 
 module.exports = router;
