@@ -3,9 +3,8 @@
 
 
 # United Remote Coding Challenge
-
 a small web application allowing you to
-show nearby shops from your position
+lists shops nearby from your position
 
 # 🚀Quick start
 
@@ -26,26 +25,26 @@ you have to change the user and password ;)
 # PAGES :
 1. Register Page:
 <div style="text-align:center">
-<img width="1132" alt="Screen Shot 2020-01-18 at 9 33 13 PM" src="https://user-images.githubusercontent.com/47558088/72670368-f6209280-3a3c-11ea-8f4b-b0697f836b2b.png">
+<img width="720" alt="Screen Shot 2020-01-18 at 9 33 13 PM" src="https://user-images.githubusercontent.com/47558088/72670368-f6209280-3a3c-11ea-8f4b-b0697f836b2b.png">
 </div>
 
 2. Login Page:
 <div style="text-align:center">
-<img width="1131" alt="Screen Shot 2020-01-18 at 9 39 19 PM" src="https://user-images.githubusercontent.com/47558088/72670374-05074500-3a3d-11ea-918b-4dc3180e7d0a.png">
+<img width="720" alt="Screen Shot 2020-01-18 at 9 39 19 PM" src="https://user-images.githubusercontent.com/47558088/72670374-05074500-3a3d-11ea-918b-4dc3180e7d0a.png">
 </div>
 
 3. Shops Page:
 <div style="text-align:center">
-<img width="1122" alt="Screen Shot 2020-01-18 at 9 32 40 PM" src="https://user-images.githubusercontent.com/47558088/72670382-0e90ad00-3a3d-11ea-8485-2e6846893dfb.png">
+<img width="720" alt="Screen Shot 2020-01-18 at 9 32 40 PM" src="https://user-images.githubusercontent.com/47558088/72670382-0e90ad00-3a3d-11ea-8485-2e6846893dfb.png">
 </div>
 
 4. favorite shops Page:
 <div style="text-align:center">
-<img width="1135" alt="Screen Shot 2020-01-18 at 9 32 55 PM" src="https://user-images.githubusercontent.com/47558088/72670386-18b2ab80-3a3d-11ea-8ae4-bb42b87f3fcf.png">
+<img width="720" alt="Screen Shot 2020-01-18 at 9 32 55 PM" src="https://user-images.githubusercontent.com/47558088/72670386-18b2ab80-3a3d-11ea-8ae4-bb42b87f3fcf.png">
 </div>
 
 
-# The coding challenge is about implementing an app that lists shops nearby.
+# 
 
 As a User, I can sign up using my email & password ✅<br>
 As a User, I can sign in using my email & password ✅<br>
