@@ -73,6 +73,11 @@ Bonus point (those items are optional):<br>
 [BONUS] As a User, I can display the list of preferred shops ✅<br>
 [BONUS] As a User, I can remove a shop from my preferred shops list ✅<br>
 
+# I did use on this project:
+- React.
+- NODEJS
+- EXPRESS
+- MATERIAL-ui
 
 # Contributing
 Feel free to contribute if you think something can be improved in any way.
