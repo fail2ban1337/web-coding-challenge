@@ -27,13 +27,22 @@ async function dislikeShop(user_id, shop_id) {
     const [result] = await pool.query(sql, [user_id, shop_id]);
     return true;
   } catch (err) {
-    console.log(err);
     return false;
   }
 }
 
+async function likedShops(user_id) {
+  try {
+    let sql = "SELECT * FROM liked_shops WHERE id_user = ?";
+    const [result] = await pool.query(sql, [user_id]);
+    return result;
+  } catch (err) {
+    return [];
+  }
+}
 module.exports = {
   getShops,
   likeShop,
-  dislikeShop
+  dislikeShop,
+  likedShops
 };

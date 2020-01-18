@@ -46,15 +46,25 @@ router.get("/getShops", [middleware.auth], async (req, res) => {
 // @access  Private
 router.post("/likeShop", [middleware.auth], async (req, res) => {
   try {
-    const result = await shopModel.likeShop(req.user.id, req.body.id);
-    res.json({ success: true, msg: "Like Shop Done" });
+    const LikedShopsData = await shopModel.likedShops(req.user.id);
+    let message = "Like Shop Done";
+    LikedShopsData.forEach(val => {
+      if (val.id_shop === req.body.id && val.id_user === req.user.id) {
+        message = "shop already Liked";
+      }
+    });
+    if (message !== "shop already Liked") {
+      const result = await shopModel.likeShop(req.user.id, req.body.id);
+    }
+
+    res.json({ success: true, msg: message });
   } catch (error) {
     res.status(500).send("server error");
   }
 });
 
 // @route   POST /api/shops/likeShop
-// @desc    Like a shop
+// @desc    Dislike a shop
 // @access  Private
 router.post("/dislikeShop", [middleware.auth], async (req, res) => {
   try {
