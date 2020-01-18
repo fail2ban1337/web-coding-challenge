@@ -85,11 +85,11 @@ const SignIn = () => {
         </Typography>
         <form className={classes.form} onSubmit={form => submitForm(form)}>
           <TextField
-            variant="standard"
+            variant="outlined"
             margin="normal"
             fullWidth
             id="email"
-            label="Email Address or Username"
+            label="Email Address"
             name="email"
             autoComplete="email"
             type="text"
@@ -98,7 +98,7 @@ const SignIn = () => {
             autoFocus
           />
           <TextField
-            variant="standard"
+            variant="outlined"
             margin="normal"
             fullWidth
             name="password"

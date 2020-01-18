@@ -129,7 +129,7 @@ function SignUp() {
   return (
     <>
       {toLogin ? (
-        <Redirect to="/login" />
+        <Redirect to="/" />
       ) : (
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -248,7 +248,7 @@ function SignUp() {
               </Button>
               <Grid container justify="center">
                 <Grid item>
-                  <Link to="/login">Already have an account? Sign in</Link>
+                  <Link to="/">Already have an account? Sign in</Link>
                 </Grid>
               </Grid>
             </form>
