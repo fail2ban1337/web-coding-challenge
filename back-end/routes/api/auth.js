@@ -5,7 +5,7 @@ const userModel = require("../../models/users");
 
 // @route   GET api/auth
 // @desc    Test route
-// @access  Public
+// @access  Private
 router.get("/", [middleware.auth], async (req, res) => {
   try {
     const user = await userModel.findById(req.user.id);
