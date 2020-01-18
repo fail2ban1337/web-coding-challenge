@@ -32,7 +32,7 @@ export function authReducer(state = authInitState, action) {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
+        loading: true
       };
     case LOGIN_FAIL:
     case AUTH_ERROR:
