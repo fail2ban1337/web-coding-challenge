@@ -9,6 +9,10 @@ lists shops nearby.
 # 🚀Quick start
 
 you have to change the user and password ;)
+thne run tha app:
+```
+cd back-end && npm run dev
+```
 ```
 # back-end/config/defualt.json
 {
@@ -21,6 +25,7 @@ you have to change the user and password ;)
     "jwtSecret": "1337shop"
 }
 ```
+
 
 # PAGES :
 <p align="center">
