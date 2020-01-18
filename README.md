@@ -23,6 +23,7 @@ you have to change the user and password ;)
 ```
 
 # PAGES :
+<div style="align="center"">
 1. Register Page:
 <div style="text-align:center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 33 13 PM" src="https://user-images.githubusercontent.com/47558088/72670368-f6209280-3a3c-11ea-8f4b-b0697f836b2b.png">
@@ -42,7 +43,7 @@ you have to change the user and password ;)
 <div style="text-align:center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 32 55 PM" src="https://user-images.githubusercontent.com/47558088/72670386-18b2ab80-3a3d-11ea-8ae4-bb42b87f3fcf.png">
 </div>
-
+</div>
 
 # 
 
