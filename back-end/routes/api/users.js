@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// @route   GET api/users
+// @route   GET api/users/register
 // @desc     Register User
 // @access  Public
 router.post(
