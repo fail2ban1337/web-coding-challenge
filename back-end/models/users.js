@@ -35,8 +35,16 @@ async function findById(id) {
   }
 }
 
+// get user position
+async function getPosition(id) {
+  let sql = "SELECT user_latitude, user_longitude FROM users WHERE id = ?";
+  const [result] = await pool.query(sql, [id]);
+  return result[0];
+}
+
 module.exports = {
   findOne,
   register,
-  findById
+  findById,
+  getPosition
 };
