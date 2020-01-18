@@ -23,8 +23,9 @@ you have to change the user and password ;)
 ```
 
 # PAGES :
-<div style="text-align:center">
+<p align="center">
 1. Register Page:
+</p>
 <p align="center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 33 13 PM" src="https://user-images.githubusercontent.com/47558088/72670368-f6209280-3a3c-11ea-8f4b-b0697f836b2b.png">
 </p>
