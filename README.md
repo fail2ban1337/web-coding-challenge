@@ -29,19 +29,19 @@ you have to change the user and password ;)
 </p>
 
 2. Login Page:
-<div style="text-align:center">
+<p align="center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 39 19 PM" src="https://user-images.githubusercontent.com/47558088/72670374-05074500-3a3d-11ea-918b-4dc3180e7d0a.png">
-</div>
+</p>
 
 3. Shops Page:
-<div style="text-align:center">
+<p align="center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 32 40 PM" src="https://user-images.githubusercontent.com/47558088/72670382-0e90ad00-3a3d-11ea-8485-2e6846893dfb.png">
-</div>
+</p>
 
 4. favorite shops Page:
-<div style="text-align:center">
+<p align="center">
 <img width="600" alt="Screen Shot 2020-01-18 at 9 32 55 PM" src="https://user-images.githubusercontent.com/47558088/72670386-18b2ab80-3a3d-11ea-8ae4-bb42b87f3fcf.png">
-</div>
+</p>
 
 # 
 
