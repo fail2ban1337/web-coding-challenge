@@ -77,7 +77,6 @@ Bonus point (those items are optional):<br>
 - React.
 - NODEJS
 - EXPRESS
-- MATERIAL-ui
 - MYSQL
 
 # Contributing
