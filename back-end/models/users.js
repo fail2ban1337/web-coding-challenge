@@ -30,7 +30,6 @@ async function findById(id) {
     const [result] = await pool.query(sql, [id]);
     return result[0];
   } catch (error) {
-    console.log(error);
     return false;
   }
 }

@@ -13,12 +13,10 @@ const key = config.get("jwtSecret");
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email);
     const user = await userModel.findOne(email);
     if (user) {
       const passwordCheck = await bcrypt.compare(password, user.password);
       if (!passwordCheck) {
-        console.log("1");
         return res.status(400).json({
           errors: [
             {
@@ -84,7 +82,6 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log(errors);
       return res.status(400).json({
         errors: errors.array()
       });
@@ -118,7 +115,6 @@ router.post(
         }
       }
     } catch (err) {
-      console.log(err.message);
       res.status(500).send({
         errors: [
           {

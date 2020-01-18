@@ -15,7 +15,6 @@ router.get("/", [middleware.auth], async (req, res) => {
       res.status(500).send("Server Error");
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send("server error");
   }
 });

@@ -46,9 +46,7 @@ router.get("/getShops", [middleware.auth], async (req, res) => {
 // @access  Private
 router.get("/getFavShops", [middleware.auth], async (req, res) => {
   try {
-    console.log(req.user.id);
     const result = await shopModel.getFavorite(req.user.id);
-    console.log(result);
     const position = await userModel.getPosition(req.user.id);
     function distance(lat1, lon1, lat2, lon2) {
       var p = 0.017453292519943295; // Math.PI / 180
@@ -77,7 +75,6 @@ router.get("/getFavShops", [middleware.auth], async (req, res) => {
     });
     res.json(result);
   } catch (error) {
-    console.log(error);
     res.status(500).send("server error");
   }
 });

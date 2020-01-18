@@ -17,7 +17,6 @@ async function getFavorite(id) {
     const [result] = await pool.query(sql, [id]);
     return result;
   } catch (error) {
-    console.log(error);
     return [];
   }
 }
