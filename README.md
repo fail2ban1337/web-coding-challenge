@@ -8,6 +8,9 @@ lists shops nearby.
 
 # 🚀Quick start
 
+you can find the database in
+```./shop_united.sql```
+
 you have to change the user and password ;)
 
 ```
@@ -22,11 +25,13 @@ you have to change the user and password ;)
     "jwtSecret": "1337shop"
 }
 ```
-then run tha app
+then run the app
 <br>
 ```
 cd back-end && npm run dev
 ```
+
+
 
 
 # PAGES :
