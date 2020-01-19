@@ -8,7 +8,7 @@ lists shops nearby.
 
 # 🚀Quick start
 
-you can find the database in
+you can find the database in <br>
 ```./shop_united.sql```
 
 you have to change the user and password ;)
