@@ -9,6 +9,7 @@ lists shops nearby.
 # 🚀Quick start
 
 you have to change the user and password ;)
+
 ```
 # back-end/config/defualt.json
 {
@@ -21,6 +22,12 @@ you have to change the user and password ;)
     "jwtSecret": "1337shop"
 }
 ```
+then run tha app
+<br>
+```
+cd back-end && npm run dev
+```
+
 
 # PAGES :
 <p align="center">
@@ -41,7 +48,8 @@ you have to change the user and password ;)
 3. Shops Page:
 </p>
 <p align="center">
-<img width="600" alt="Screen Shot 2020-01-18 at 9 32 40 PM" src="https://user-images.githubusercontent.com/47558088/72670382-0e90ad00-3a3d-11ea-8485-2e6846893dfb.png">
+<img width="600" alt="Screen Shot 2020-01-18 at 11 48 24 PM" src="https://user-images.githubusercontent.com/47558088/72671593-135d5d00-3a4d-11ea-93a8-b84a06b1b8db.png">
+
 </p>
 <br>
 <p align="center">
@@ -66,6 +74,11 @@ Bonus point (those items are optional):<br>
 [BONUS] As a User, I can display the list of preferred shops ✅<br>
 [BONUS] As a User, I can remove a shop from my preferred shops list ✅<br>
 
+# I did use on this project:
+- React.
+- NODEJS
+- EXPRESS
+- MYSQL
 
 # Contributing
 Feel free to contribute if you think something can be improved in any way.
