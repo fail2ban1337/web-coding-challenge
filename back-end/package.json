@@ -11,7 +11,7 @@
   "author": "Ayoub Belomari",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.2.4",
     "express": "^4.17.1",
